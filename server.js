@@ -17,7 +17,7 @@ app.get("/",(request,response) => {
 
 
 app.get("/photos", async (request, response) => {
-    const API = `https://api.unsplash.com/search/photos/?client_id=${process.env.ACCESS_KEY}&query=goat`
+    const API = `https://api.unsplash.com/search/photos/?client_id=${process.env.ACCESS_KEY}&query=${request.query.subject}`
     const res = await axios.get(API)
 
     const photos = res.data.results.map((photo)=> {
